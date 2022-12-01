@@ -5,6 +5,8 @@ import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,12 +27,22 @@ import club.zhanshen.common.utils.R;
  * @email 3119954407@qq.com
  * @date 2022-11-29 10:30:12
  */
+@RefreshScope
 @RestController
 @RequestMapping("coupon/homesubject")
 public class HomeSubjectController {
     @Autowired
     private HomeSubjectService homeSubjectService;
 
+    @Value("${coupon.user.name}")
+    String name;
+    /**
+     * 测试配置中心
+     */
+    @RequestMapping("/test")
+    public R test(){
+        return R.ok().put("name",name);
+    }
     /**
      * 列表
      */
