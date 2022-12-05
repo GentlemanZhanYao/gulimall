@@ -23,7 +23,7 @@ import club.zhanshen.common.utils.R;
  *
  * @author zhanyao
  * @email 3119954407@qq.com
- * @date 2022-11-28 23:47:08
+ * @date 2022-12-01 19:34:55
  */
 @RestController
 @RequestMapping("product/skuimages")

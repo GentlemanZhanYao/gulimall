@@ -1,10 +1,13 @@
 package club.zhanshen.gulimall.product.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -12,7 +15,7 @@ import lombok.Data;
  * 
  * @author zhanyao
  * @email 3119954407@qq.com
- * @date 2022-11-28 20:56:30
+ * @date 2022-12-01 19:34:55
  */
 @Data
 @TableName("pms_category")
@@ -57,4 +60,6 @@ public class CategoryEntity implements Serializable {
 	 */
 	private Integer productCount;
 
+	@TableField(exist = false)
+	private List<CategoryEntity> children;
 }

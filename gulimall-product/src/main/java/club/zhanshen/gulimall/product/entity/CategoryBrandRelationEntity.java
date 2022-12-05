@@ -12,7 +12,7 @@ import lombok.Data;
  * 
  * @author zhanyao
  * @email 3119954407@qq.com
- * @date 2022-11-28 20:56:31
+ * @date 2022-12-01 19:34:55
  */
 @Data
 @TableName("pms_category_brand_relation")

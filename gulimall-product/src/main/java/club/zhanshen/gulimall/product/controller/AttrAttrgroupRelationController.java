@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import club.zhanshen.gulimall.product.entity.SpuImagesEntity;
-import club.zhanshen.gulimall.product.service.SpuImagesService;
+import club.zhanshen.gulimall.product.entity.AttrAttrgroupRelationEntity;
+import club.zhanshen.gulimall.product.service.AttrAttrgroupRelationService;
 import club.zhanshen.common.utils.PageUtils;
 import club.zhanshen.common.utils.R;
 
 
 
 /**
- * spu图片
+ * 属性&属性分组关联
  *
  * @author zhanyao
  * @email 3119954407@qq.com
  * @date 2022-12-01 19:34:55
  */
 @RestController
-@RequestMapping("product/spuimages")
-public class SpuImagesController {
+@RequestMapping("product/attrattrgrouprelation")
+public class AttrAttrgroupRelationController {
     @Autowired
-    private SpuImagesService spuImagesService;
+    private AttrAttrgroupRelationService attrAttrgroupRelationService;
 
     /**
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("product:spuimages:list")
+    //@RequiresPermissions("product:attrattrgrouprelation:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = spuImagesService.queryPage(params);
+        PageUtils page = attrAttrgroupRelationService.queryPage(params);
 
         return R.ok().put("page", page);
     }
@@ -47,20 +47,20 @@ public class SpuImagesController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("product:spuimages:info")
+    //@RequiresPermissions("product:attrattrgrouprelation:info")
     public R info(@PathVariable("id") Long id){
-		SpuImagesEntity spuImages = spuImagesService.getById(id);
+		AttrAttrgroupRelationEntity attrAttrgroupRelation = attrAttrgroupRelationService.getById(id);
 
-        return R.ok().put("spuImages", spuImages);
+        return R.ok().put("attrAttrgroupRelation", attrAttrgroupRelation);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("product:spuimages:save")
-    public R save(@RequestBody SpuImagesEntity spuImages){
-		spuImagesService.save(spuImages);
+    //@RequiresPermissions("product:attrattrgrouprelation:save")
+    public R save(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
+		attrAttrgroupRelationService.save(attrAttrgroupRelation);
 
         return R.ok();
     }
@@ -69,9 +69,9 @@ public class SpuImagesController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("product:spuimages:update")
-    public R update(@RequestBody SpuImagesEntity spuImages){
-		spuImagesService.updateById(spuImages);
+    //@RequiresPermissions("product:attrattrgrouprelation:update")
+    public R update(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
+		attrAttrgroupRelationService.updateById(attrAttrgroupRelation);
 
         return R.ok();
     }
@@ -80,9 +80,9 @@ public class SpuImagesController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("product:spuimages:delete")
+    //@RequiresPermissions("product:attrattrgrouprelation:delete")
     public R delete(@RequestBody Long[] ids){
-		spuImagesService.removeByIds(Arrays.asList(ids));
+		attrAttrgroupRelationService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

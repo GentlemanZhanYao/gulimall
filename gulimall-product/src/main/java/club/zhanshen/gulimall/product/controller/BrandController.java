@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import club.zhanshen.gulimall.product.entity.SpuImagesEntity;
-import club.zhanshen.gulimall.product.service.SpuImagesService;
+import club.zhanshen.gulimall.product.entity.BrandEntity;
+import club.zhanshen.gulimall.product.service.BrandService;
 import club.zhanshen.common.utils.PageUtils;
 import club.zhanshen.common.utils.R;
 
 
 
 /**
- * spu图片
+ * 品牌
  *
  * @author zhanyao
  * @email 3119954407@qq.com
  * @date 2022-12-01 19:34:55
  */
 @RestController
-@RequestMapping("product/spuimages")
-public class SpuImagesController {
+@RequestMapping("product/brand")
+public class BrandController {
     @Autowired
-    private SpuImagesService spuImagesService;
+    private BrandService brandService;
 
     /**
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("product:spuimages:list")
+    //@RequiresPermissions("product:brand:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = spuImagesService.queryPage(params);
+        PageUtils page = brandService.queryPage(params);
 
         return R.ok().put("page", page);
     }
@@ -46,21 +46,21 @@ public class SpuImagesController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
-    //@RequiresPermissions("product:spuimages:info")
-    public R info(@PathVariable("id") Long id){
-		SpuImagesEntity spuImages = spuImagesService.getById(id);
+    @RequestMapping("/info/{brandId}")
+    //@RequiresPermissions("product:brand:info")
+    public R info(@PathVariable("brandId") Long brandId){
+		BrandEntity brand = brandService.getById(brandId);
 
-        return R.ok().put("spuImages", spuImages);
+        return R.ok().put("brand", brand);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("product:spuimages:save")
-    public R save(@RequestBody SpuImagesEntity spuImages){
-		spuImagesService.save(spuImages);
+    //@RequiresPermissions("product:brand:save")
+    public R save(@RequestBody BrandEntity brand){
+		brandService.save(brand);
 
         return R.ok();
     }
@@ -69,9 +69,9 @@ public class SpuImagesController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("product:spuimages:update")
-    public R update(@RequestBody SpuImagesEntity spuImages){
-		spuImagesService.updateById(spuImages);
+    //@RequiresPermissions("product:brand:update")
+    public R update(@RequestBody BrandEntity brand){
+		brandService.updateById(brand);
 
         return R.ok();
     }
@@ -80,9 +80,9 @@ public class SpuImagesController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("product:spuimages:delete")
-    public R delete(@RequestBody Long[] ids){
-		spuImagesService.removeByIds(Arrays.asList(ids));
+    //@RequiresPermissions("product:brand:delete")
+    public R delete(@RequestBody Long[] brandIds){
+		brandService.removeByIds(Arrays.asList(brandIds));
 
         return R.ok();
     }
