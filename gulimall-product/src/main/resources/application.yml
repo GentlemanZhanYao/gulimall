@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://1.116.201.187/gulimall_pms
+    url: jdbc:mysql://1.116.201.187:3306/gulimall_pms
     driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     nacos:
@@ -15,5 +15,7 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
 server:
   port: 8000

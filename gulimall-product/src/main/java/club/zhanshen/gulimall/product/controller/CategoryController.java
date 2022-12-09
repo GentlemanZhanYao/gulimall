@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,7 +52,7 @@ public class CategoryController {
     public R info(@PathVariable("catId") Long catId){
 		CategoryEntity category = categoryService.getById(catId);
 
-        return R.ok().put("category", category);
+        return R.ok().put("data", category);
     }
 
     /**
@@ -65,6 +66,17 @@ public class CategoryController {
         return R.ok();
     }
 
+    /**
+     * 拖拽更改排名等信息
+     * @param category
+     * @return
+     */
+    @RequestMapping("/update/sort")
+    //@RequiresPermissions("product:category:update")
+    public R update(@RequestBody CategoryEntity[] category){
+        categoryService.updateBatchById(Arrays.asList(category));
+        return R.ok();
+    }
     /**
      * 修改
      */
@@ -82,8 +94,8 @@ public class CategoryController {
     @RequestMapping("/delete")
     //@RequiresPermissions("product:category:delete")
     public R delete(@RequestBody Long[] catIds){
-		categoryService.removeByIds(Arrays.asList(catIds));
-
+		//categoryService.removeByIds(Arrays.asList(catIds));
+        categoryService.removeMenuByIds(Arrays.asList(catIds));
         return R.ok();
     }
 
